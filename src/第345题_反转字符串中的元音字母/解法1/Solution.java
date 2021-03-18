@@ -1,4 +1,4 @@
-package 第345题_反转字符串种的元音字母.解法1;
+package 第345题_反转字符串中的元音字母.解法1;
 
 public class Solution {
     public String reverseVowels(String s) {
