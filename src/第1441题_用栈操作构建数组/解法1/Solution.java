@@ -1,0 +1,46 @@
+package 第1441题_用栈操作构建数组.解法1;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+class Solution {
+    public List<String> buildArray(int[] target, int n) {
+        // 1.将target数组中所有数倒序装入栈中，因为只有这样才能顺序读取元素
+        Stack<Integer> stack = new Stack<>();
+        for (int i = target.length - 1; i >= 0; i--) {
+            stack.push(target[i]);
+        }
+        // 2.循环比较栈顶元素
+        List<String> list = new ArrayList<>();
+        int i = 1;
+        while (i <= n && !stack.isEmpty()) {
+            if (stack.peek() == i) {
+                list.add("Push");
+                stack.pop();// 元素比较成功，则将栈顶元素出栈
+            } else {
+                list.add("Push");
+                list.add("Pop");
+            }
+            i++;
+        }
+        return list;
+    }
+}
+/*
+    题目解析：
+        1.关键字：目标数组target和整数n
+            n间接提供了一个列表[1,n]，例如n=3,nums=[1,2,3]
+            target直接提供了一个列表，例如target=[1,3]
+        2.从n提供的列表获取数字与target列表中数字进行比较，i=0（num数组指针）,j=0（target数组指针）
+            target[i]==nums[j]，1==1，那么List集合中只需要添加"Push"字符串，两个数组的指针都向前移动一位（i++;j++）
+            target[i]!=nums[j]，2!=3，可以发现两个数字不相等，那么List集合久必须添加"Push"和"Pop"字符串，表示先装入再移除，这个时候，注意，只有nums数组的指针移动一位（i++），而target数组的指针不变
+            target[i]==nums[j]，3==3，那么List集合中只需要添加"Push"字符串
+        3.简单来说，就是如果比较的两个数不相等，则添加"Push"和"Pop"两个字符串，如果两个数相等，则只需要添加"Push"字符串
+    解题思路：
+        0.栈
+ */
+/*
+    执行用时：1 ms, 在所有 Java 提交中击败了18.72% 的用户
+    内存消耗：38.8 MB, 在所有 Java 提交中击败了22.71% 的用户
+ */
