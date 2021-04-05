@@ -1,0 +1,22 @@
+package 第168题_Excel表列名称.解法1;
+
+class Solution {
+    public String convertToTitle(int n) {
+        StringBuilder sb = new StringBuilder();
+        while (n > 0) {
+            n--;
+            sb.append((char) (n % 26 + 'A'));
+            n = n / 26;
+        }
+        return sb.reverse().toString();
+    }
+}
+/*
+    'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H' 'I' 'J' 'K' 'L' 'M' 'N' 'O' 'P' 'Q' 'R' 'S' 'T' 'U' 'V' 'W' 'X' 'Y' 'Z'
+     65  66  67  68  69  70  71  72  73  74 75  76   77  78  79  80  81  82  83  84  85  86  87  88  89  90
+     1   2    3   4   5   6   7   8   9  10 11  12   13  14  15  16  17  18  19  20  21  22  23  24  25  26
+ */
+/*
+    执行用时：0 ms, 在所有 Java 提交中击败了100.00% 的用户
+    内存消耗：35.7 MB, 在所有 Java 提交中击败了46.84% 的用户
+ */
